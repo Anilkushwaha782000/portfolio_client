@@ -18,7 +18,7 @@ function Skills() {
         { id: 7, name: "Bootstrap", icon: "https://blog.getbootstrap.com/assets/brand/bootstrap-logo-shadow.png" },
     ]
     return (
-        <div className="flex flex-col justify-between items-center md:h-screen ">
+        <div className="flex flex-col justify-between items-center ">
             <div className="mt-24 w-3/4 mx-auto">
                 <motion.div
                     initial={{ opacity: 0, x: -200 }}
