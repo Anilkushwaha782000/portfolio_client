@@ -20,7 +20,7 @@ function Project() {
       {
             title: "React Ecommerce website ",
             Techtack: "React.js, Tailwindcss",
-            description: "A React ecommerce site offers streamlined shopping with React's power"A React ecommerce site offers streamlined shopping with React's power"",
+            description: "A React ecommerce site offers streamlined shopping with React's power",
             link: "https://reactifymarket.netlify.app/",
         },
       {
