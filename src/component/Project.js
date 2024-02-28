@@ -5,17 +5,29 @@ import axios from 'axios';
 function Project() {
     const [projectlist, setProjectList] = useState([])
     useEffect(() => {
-        axios.get("/project").then(response => {
-            console.log("projectdata", response.data)
-            setProjectList(response.data)
-        }).catch(error => console.log(error))
+        // axios.get("/project").then(response => {
+        //     console.log("projectdata", response.data)
+        //     setProjectList(response.data)
+        // }).catch(error => console.log(error))
     }, [])
     const projectList = [
         {
-            title: "Chat Application  ",
+            title: "Airbnb clone  ",
             Techtack: "React.js, Node.js, express.js, socket.io",
-            description: "A chat application facilitates real-time communication between users, allowing them to exchange messages and files content instantaneously.",
+            description: "An Airbnb clone is a platform replicating Airbnb's features, enabling users to search, list, and book accommodations, facilitating similar experiences",
             link: "",
+        },
+      {
+            title: "React Ecommerce website ",
+            Techtack: "React.js, Tailwindcss",
+            description: "A React ecommerce site offers streamlined shopping with React's power"A React ecommerce site offers streamlined shopping with React's power"",
+            link: "https://reactifymarket.netlify.app/",
+        },
+      {
+            title: "Projectriseup  ",
+            Techtack: "React.js, tailwindcss",
+            description: "Seamless project organization Enhanced collaboration capabilities Streamlined workflow management",
+            link: "https://projectriseup.netlify.app/",
         }]
 
     const handleDelete = async (projectId) => {
@@ -47,7 +59,7 @@ function Project() {
                 </motion.h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-16 max-w-screen-lg mx-auto absolute mt-40">
-                {projectlist?.length > 0 && projectlist.map((item, index) => {
+                {projectList?.length > 0 && projectlist.map((item, index) => {
                     return (
 
                         <motion.div
@@ -93,19 +105,19 @@ function Project() {
 
                     )
                 })}
-                {projectlist?.length > 0 && (
-                    <motion.div
-                        initial={{ x: -100, opacity: 0 }}
-                        animate={{ x: 0, opacity: 1 }}
-                        transition={{ duration: 0.5, delay: 0.5 }}
-                        className='flex items-center gap-2'>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
-                        </svg>
-                        <Link to="/newproject"  >Add new project</Link>
+                // {projectlist?.length > 0 && (
+                //     <motion.div
+                //         initial={{ x: -100, opacity: 0 }}
+                //         animate={{ x: 0, opacity: 1 }}
+                //         transition={{ duration: 0.5, delay: 0.5 }}
+                //         className='flex items-center gap-2'>
+                //         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                //             <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+                //         </svg>
+                //         <Link to="/newproject"  >Add new project</Link>
 
-                    </motion.div>
-                )}
+                //     </motion.div>
+                // )}
 
             </div>
         </div>
