@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 function Project() {
     const [projectlist, setProjectList] = useState([])
-    useEffect(() => {
-        // axios.get("/project").then(response => {
-        //     console.log("projectdata", response.data)
-        //     setProjectList(response.data)
-        // }).catch(error => console.log(error))
-    }, [])
+    // useEffect(() => {
+    //     // axios.get("/project").then(response => {
+    //     //     console.log("projectdata", response.data)
+    //     //     setProjectList(response.data)
+    //     // }).catch(error => console.log(error))
+    // }, [])
     const projectList = [
         {
             title: "Airbnb clone  ",
