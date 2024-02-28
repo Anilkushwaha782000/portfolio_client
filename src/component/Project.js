@@ -1,36 +1,32 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 function Project() {
-    const projectList = [{
-        title: "Airbnb clone ",
-        Techtack: "React.js, Node.js, Expressjs",
-        description: "An Airbnb clone is a platform replicating Airbnb's features, enabling users to search, list, and book accommodations, facilitating similar experiences",
-        link: "",
-    },
-    {
-        title: "React Ecommerce website ",
-        Techtack: "React.js ",
-        description: "A React ecommerce site offers streamlined shopping with React's power,",
-        link: "https://reactifymarket.netlify.app/",
-    },
-    {
-        title: "Chat Application  ",
-        Techtack: "React.js, Node.js, express.js, socket.io",
-        description: "A chat application facilitates real-time communication between users, allowing them to exchange messages and files content instantaneously.",
-        link: "",
-    },
-    {
-        title: "Projectriseup ",
-        Techtack: "React.js, taileindcss",
-        description: "Seamless project organization Enhanced collaboration capabilities Streamlined workflow management",
-        link: "https://projectriseup.netlify.app/",
-    },
-    {
-        title: "Ecommerce website  ",
-        Techtack: "Html,css,js,bootstarp",
-        description: "A standard ecommerce website provides a platform for buying and selling goods online, featuring product listings",
-        link: "https://anilkushwaha782000.github.io/E-Commerce/",
-    }]
+    const [projectlist, setProjectList] = useState([])
+    useEffect(() => {
+        axios.get("/project").then(response => {
+            console.log("projectdata", response.data)
+            setProjectList(response.data)
+        }).catch(error => console.log(error))
+    }, [])
+    const projectList = [
+        {
+            title: "Chat Application  ",
+            Techtack: "React.js, Node.js, express.js, socket.io",
+            description: "A chat application facilitates real-time communication between users, allowing them to exchange messages and files content instantaneously.",
+            link: "",
+        }]
+
+    const handleDelete = async (projectId) => {
+        console.log("projectid", projectId)
+        try {
+            await axios.delete(`/delete/${projectId}`);
+            setProjectList(projectlist.filter(project => project._id !== projectId));
+        } catch (error) {
+            console.error('Error in deleting project:', error);
+        }
+    };
     return (
         <div className="flex flex-col justify-between items-center md:h-screen bg-gray-200" >
             <div className='absolute mt-24 flex flex-row gap-2 items-center'>
@@ -51,7 +47,7 @@ function Project() {
                 </motion.h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-16 max-w-screen-lg mx-auto absolute mt-40">
-                {projectList.map((item, index) => {
+                {projectlist?.length > 0 && projectlist.map((item, index) => {
                     return (
 
                         <motion.div
@@ -60,7 +56,7 @@ function Project() {
                             initial={{ opacity: 0, y: 20 * index }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: index * 0.2 }}
-                            className="bg-white rounded-lg shadow-md p-6 w-64 h-auto">
+                            className="bg-gray-800 text-white rounded-lg shadow-md p-6 w-64 h-auto">
                             <motion.h3
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
@@ -72,22 +68,45 @@ function Project() {
                             <motion.p initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6, delay: 0.6 }}
-                                className="text-gray-600 mb-2">
-                                {item.Techtack}
+                                className=" mb-2">
+                                {item.techstack}
                             </motion.p>
                             <motion.p initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6, delay: 0.6 }}
-                                className="text-gray-700">
+                                className="">
                                 {item.description}
                             </motion.p>
                             <div className='mb-1'>
-                                <a className='underline' href=''>Visit website</a>
+                                <a className='underline' href={item.link}>Visit website</a>
                             </div>
+                            <div className='relative'>
+                                <button className=" text-right rounded-full text-red-600 absolute bottom-0 right-0" onClick={() => handleDelete(item._id)}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+                                    </svg>
+                                </button>
+                            </div>
+
                         </motion.div>
+
 
                     )
                 })}
+                {projectlist?.length > 0 && (
+                    <motion.div
+                        initial={{ x: -100, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ duration: 0.5, delay: 0.5 }}
+                        className='flex items-center gap-2'>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+                        </svg>
+                        <Link to="/newproject"  >Add new project</Link>
+
+                    </motion.div>
+                )}
+
             </div>
         </div>
     );

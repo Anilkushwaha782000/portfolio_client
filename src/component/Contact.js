@@ -7,10 +7,10 @@ function Contact() {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-96 "
+      className="bg-gray-800 text-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-96 flex-grow-0 "
     >
       <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
+        <label className="block  text-sm font-bold mb-2" htmlFor="name">
           Name
         </label>
         <input
@@ -21,7 +21,7 @@ function Contact() {
         />
       </div>
       <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+        <label className="block  text-sm font-bold mb-2" htmlFor="email">
           Email
         </label>
         <input
@@ -32,7 +32,7 @@ function Contact() {
         />
       </div>
       <div className="mb-6">
-        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="message">
+        <label className="block  text-sm font-bold mb-2" htmlFor="message">
           Message
         </label>
         <textarea

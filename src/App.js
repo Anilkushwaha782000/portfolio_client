@@ -8,6 +8,10 @@ import Skills from './component/Skills'
 import About from './component/About'
 import Contact from './component/Contact'
 import Home from './component/Home';
+import NewProject from './component/NewProject';
+import axios from 'axios';
+axios.defaults.baseURL="http://localhost:4004/"
+axios.defaults.withCredentials=true
 function App() {
   return (
     <Router>
@@ -21,6 +25,7 @@ function App() {
                     <Route path="/skill" element={<Skills/>} />
                     <Route path="/experience" element={<Experience/>} />
                     <Route path="/project" element={<Project/>} />
+                    <Route path="/newproject" element={<NewProject/>} />
                 </Routes>
            
         </Router>

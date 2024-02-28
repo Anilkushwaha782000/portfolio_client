@@ -61,9 +61,14 @@ function Home() {
                 <p className="text-lg text-center text-gray-600">
                     Let's connect and build something amazing together.
                 </p>
-                <div className='mt-4'>
+                <motion.div
+                initial={{ x: -200, opacity: 0 , scale: 0.5 }}
+                animate={{ opacity: 1,  x: 0 ,  scale:1}}
+                // exit={{ opacity: 0, y: 20 }}
+                transition={{ duration: 0.8 }}
+                className='mt-4'>
                     <Link  to="/contact" className='p-4 bg-blue-500 text-white rounded-md'>Hire me</Link>
-                </div>
+                </motion.div>
             </motion.footer>
         </div>
     );
