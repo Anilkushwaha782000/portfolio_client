@@ -10,7 +10,7 @@ import Contact from './component/Contact'
 import Home from './component/Home';
 import NewProject from './component/NewProject';
 import axios from 'axios';
-axios.defaults.baseURL="http://localhost:4004/"
+axios.defaults.baseURL="https://portfolio-server-navy-kappa.vercel.app/"
 axios.defaults.withCredentials=true
 function App() {
   return (
